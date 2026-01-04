@@ -6,17 +6,6 @@ import Todolist from "../components/Todolist.vue";
 const userStore = useUserStore();
 const router = useRouter();
 
-const handleLogin = () => {
-  const username = prompt("请输入用户名：");
-  if (username) {
-    userStore.login(username);
-  }
-};
-
-const handleLogout = () => {
-  userStore.logout();
-};
-
 const goToAbout = () => {
   router.push("/about");
 };
@@ -30,8 +19,6 @@ const goToAbout = () => {
       <p>登录状态：{{ userStore.isLoggedIn ? "已登录" : "未登录" }}</p>
     </div>
     <div class="actions">
-      <button v-if="!userStore.isLoggedIn" @click="handleLogin">登录</button>
-      <button v-else @click="handleLogout">退出登录</button>
       <button @click="goToAbout">前往关于页</button>
     </div>
     <Todolist />
