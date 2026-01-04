@@ -4,7 +4,7 @@ import typescript from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
 import vueParser from "vue-eslint-parser";
 import importPlugin from "eslint-plugin-import";
-import prettier from "eslint-config-prettier";
+import prettier from "eslint-config-prettier/flat";
 
 export default [
   // 基础 JavaScript 推荐规则
