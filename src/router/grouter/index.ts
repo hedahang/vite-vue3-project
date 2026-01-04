@@ -1,5 +1,6 @@
 import { ref, inject, type Ref } from "vue";
 import type { App } from "vue";
+
 import RouterLink from "./RouterILink.vue";
 import RouterView from "./RouterView.vue";
 
@@ -8,11 +9,11 @@ const ROUTER_KEY = "__router__";
 interface RouteRecordRaw {
   path: string;
   name?: string;
-  component?: any;
+  component?: unknown;
 }
 
 interface History {
-  bingEvents: (fn: () => void) => void;
+  bingEvents: (_fn: () => void) => void;
   url: string;
 }
 
@@ -30,8 +31,8 @@ function useRouter() {
 }
 
 function createWebHashHistory() {
-  function bingEvents(fn: () => void) {
-    window.addEventListener("hashchange", fn);
+  function bingEvents(_fn: () => void) {
+    window.addEventListener("hashchange", _fn);
   }
   return {
     bingEvents,

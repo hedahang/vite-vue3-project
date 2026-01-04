@@ -1,17 +1,18 @@
 import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "Todo",
-  setup(props, { slots }) {
+  // props, { slots }
+  setup() {
     const title = ref<string>("");
     const todos = ref<Array<{ title: string; done: boolean }>>([
       { title: "学习Vue 3", done: false },
     ]);
-    function addTodo() {
-      if (title.value) {
-        todos.value.push({ title: title.value, done: false });
-        title.value = "";
-      }
-    }
+    // function addTodo() {
+    //   if (title.value) {
+    //     todos.value.push({ title: title.value, done: false });
+    //     title.value = "";
+    //   }
+    // }
     return () => (
       <div class="todo">
         <input type="text" v-model={title.value} />

@@ -4,8 +4,9 @@ import type {
   InternalAxiosRequestConfig,
   AxiosResponse,
 } from "axios";
-import { getToken } from "./auth";
 import { ElMessage } from "element-plus";
+
+import { getToken } from "./auth";
 
 axios.defaults.headers["Content-Type"] = "application/json;charset=utf-8";
 const service: AxiosInstance = axios.create({
@@ -24,7 +25,7 @@ service.interceptors.request.use(
     }
     return config;
   },
-  (error: any) => {
+  (error: unknown) => {
     console.log(error);
     return Promise.reject(error);
   }
@@ -41,7 +42,7 @@ service.interceptors.response.use(
     }
     return response;
   },
-  (error: any) => {
+  (error: unknown) => {
     return Promise.reject(error);
   }
 );

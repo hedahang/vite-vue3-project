@@ -4,9 +4,9 @@
     <div class="rate-container" @mouseout="mouseOut">
       <div class="rate-item-container">
         <span
-          class="rate-item"
           v-for="item in 5"
           :key="item"
+          class="rate-item"
           @mouseover="mouseOver(item)"
         >
           ☆
@@ -14,11 +14,11 @@
       </div>
       <div class="rate-item-container hollow" :style="fontwidth">
         <span
+          v-for="num in 5"
+          :key="num"
           class="rate-item"
           @mouseover="mouseOver(num)"
           @click="onRate(num)"
-          v-for="num in 5"
-          :key="num"
           >★</span
         >
       </div>

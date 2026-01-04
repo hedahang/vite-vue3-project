@@ -1,5 +1,5 @@
 <template>
-  <div class="dustbin" ref="dustbinRef">
+  <div ref="dustbinRef" class="dustbin">
     <div class="dustbin-icon">🗑</div>
     <div class="dustbin-text">
       <span>垃圾桶</span>

@@ -71,7 +71,7 @@ function handleDeleteComplete() {
 </script>
 <template>
   <div class="todolist">
-    <input type="text" v-model="title" @keydown.enter="addTodo" />
+    <input v-model="title" type="text" @keydown.enter="addTodo" />
     <transition-group
       v-if="todos.length"
       name="todo"
@@ -79,9 +79,9 @@ function handleDeleteComplete() {
       class="todo-list"
     >
       <li v-for="(todo, index) in todos" :key="`${todo.title}-${index}`">
-        <input type="checkbox" v-model="todo.done" class="done-checkbox" />
+        <input v-model="todo.done" type="checkbox" class="done-checkbox" />
         <span :class="{ done: todo.done }"> {{ todo.title }}</span>
-        <button @click="deleteTodo(index, $event)" class="delete-btn">
+        <button class="delete-btn" @click="deleteTodo(index, $event)">
           删除
         </button>
       </li>
@@ -91,12 +91,12 @@ function handleDeleteComplete() {
     </div>
     <div v-if="todos.length" class="actions-bar">
       <div class="checkbox-group">
-        全选<input type="checkbox" v-model="allDone" />
+        全选<input v-model="allDone" type="checkbox" />
         <span> {{ active }} / {{ all }} </span>
       </div>
     </div>
     <transition name="modal">
-      <div class="info-wrapper" v-if="showModal">
+      <div v-if="showModal" class="info-wrapper">
         <div class="info">哥，你啥也没输入啊！！！</div>
       </div>
     </transition>

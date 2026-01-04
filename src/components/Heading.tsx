@@ -7,7 +7,7 @@ interface 极客时间课程 {
   讲师头像?: string | boolean;
   获取口令(): string;
 }
-type 课程属性列表 = keyof 极客时间课程;
+// type 课程属性列表 = keyof 极客时间课程;
 
 let vueCourse: 极客时间课程 = {
   课程名字: "玩转Vue 3全家桶",
@@ -29,7 +29,6 @@ export default defineComponent({
     level: {
       type: Number,
       default: 1,
-      required: true,
     },
   },
   // setup(props, { slots }) {
@@ -42,10 +41,7 @@ export default defineComponent({
   // },
   setup(props, { slots }) {
     const tag = `h${props.level}`;
-    return () => (
-      <tag>
-        {slots.default?.()}+{getProperty(vueCourse, "课程名字")}
-      </tag>
-    );
+    return () =>
+      h(tag, {}, slots.default?.() + getProperty(vueCourse, "课程名字"));
   },
 });
