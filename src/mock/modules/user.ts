@@ -68,6 +68,17 @@ export default [
                 link: null,
               },
             },
+            {
+              name: "User",
+              path: "user",
+              component: "System/User/index",
+              meta: {
+                title: "用户管理",
+                icon: "system",
+                noCache: false,
+                link: null,
+              },
+            },
           ],
         },
       ]);

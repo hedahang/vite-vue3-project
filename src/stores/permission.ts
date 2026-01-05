@@ -18,6 +18,18 @@ interface BackendRoute {
   children?: BackendRoute[];
 }
 
+// 使用 import.meta.glob 预加载所有 views 目录下的组件
+const componentModules = import.meta.glob("../views/**/*.vue");
+
+// 获取组件加载器的辅助函数
+function getComponentLoader(
+  componentPath: string
+): (() => Promise<unknown>) | undefined {
+  // 构建完整的组件路径
+  const fullPath = `../views/${componentPath}.vue`;
+  return componentModules[fullPath];
+}
+
 export const usePermissionStore = defineStore("permission", () => {
   // 状态
   const routes = ref<RouteRecordRaw[]>([]);
@@ -46,9 +58,21 @@ export const usePermissionStore = defineStore("permission", () => {
       if (backendRoute.component === "Layout") {
         routeRecord.component = () => import("../layout/index.vue");
       } else {
-        // 其他组件从 views 目录导入
-        routeRecord.component = () =>
-          import(`../views/${backendRoute.component}.vue`);
+        // 使用 import.meta.glob 预加载的组件
+        const componentLoader = getComponentLoader(backendRoute.component);
+        if (componentLoader) {
+          routeRecord.component = componentLoader;
+        } else {
+          console.error(
+            `组件未找到: ../views/${backendRoute.component}.vue，请检查路径是否正确`
+          );
+          // 降级处理：尝试直接导入（可能在某些情况下有效）
+          routeRecord.component = () =>
+            import(`../views/${backendRoute.component}.vue`).catch((error) => {
+              console.error("组件加载失败:", error);
+              throw error;
+            });
+        }
       }
     } else {
       routeRecord.component = backendRoute.component;
