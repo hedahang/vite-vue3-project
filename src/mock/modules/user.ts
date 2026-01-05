@@ -52,7 +52,7 @@ export default [
           redirect: "/system/test",
           meta: {
             title: "系统管理",
-            icon: "system",
+            icon: "Histogram",
             noCache: false,
             link: null,
           },
@@ -75,6 +75,31 @@ export default [
               meta: {
                 title: "用户管理",
                 icon: "system",
+                noCache: false,
+                link: null,
+              },
+            },
+          ],
+        },
+        {
+          name: "Demo",
+          path: "/demo",
+          component: "Layout",
+          redirect: "/demo/chart",
+          meta: {
+            title: "示例管理",
+            icon: "MessageBox",
+            noCache: false,
+            link: null,
+          },
+          children: [
+            {
+              name: "ChartDemo",
+              path: "/demo/chart",
+              component: "Demo/demo3",
+              meta: {
+                title: "图表展示",
+                icon: "DataAnalysis",
                 noCache: false,
                 link: null,
               },
