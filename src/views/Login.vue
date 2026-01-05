@@ -53,7 +53,7 @@ import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { ElMessage, type FormInstance, type FormRules } from "element-plus";
 
-import request from "../utils/request";
+import { login } from "../api/login";
 import { setToken } from "../utils/auth";
 
 const router = useRouter();
@@ -91,7 +91,7 @@ const handleLogin = async () => {
     if (valid) {
       loading.value = true;
       try {
-        const response = await request.post("/api/auth/login", {
+        const response = await login({
           username: loginForm.username,
           password: loginForm.password,
         });

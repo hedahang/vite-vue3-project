@@ -9,6 +9,7 @@ import "./assets/styles/index.scss";
 import App from "./App.vue";
 import router from "./router";
 import pinia from "./stores";
+import "./permission";
 
 const app: AppType<Element> = createApp(App);
 

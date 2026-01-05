@@ -27,11 +27,11 @@ const routes: Array<RouteRecordRaw> = [
         name: "About",
         component: () => import("../views/About.vue"),
       },
-      {
-        path: "test",
-        name: "Test",
-        component: () => import("../views/Test.vue"),
-      },
+      // {
+      //   path: "test",
+      //   name: "Test",
+      //   component: () => import("../views/Test.vue"),
+      // },
     ],
   },
   {
