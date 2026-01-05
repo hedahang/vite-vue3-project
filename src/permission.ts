@@ -1,15 +1,24 @@
+import NProgress from "nprogress";
+
 import { getUserRoutes } from "./api/login";
 import router from "./router";
 import { usePermissionStore } from "./stores/permission";
 import { useUserStore } from "./stores/user";
 import { getToken } from "./utils/auth";
+import "nprogress/nprogress.css";
 
+// 配置 NProgress
+NProgress.configure({ showSpinner: false });
+
+// 白名单
 const whiteList = ["/login", "/register", "/404", "401"];
 
 router.beforeEach(async (to, _from, next) => {
+  NProgress.start();
   if (getToken()) {
     if (to.path === "/login") {
       next("/");
+      NProgress.done();
     } else {
       const userStore = useUserStore();
       const permissionStore = usePermissionStore();
@@ -51,8 +60,14 @@ router.beforeEach(async (to, _from, next) => {
   } else {
     if (whiteList.includes(to.path)) {
       next();
+      NProgress.done();
     } else {
       next(`/login?redirect=${to.path}`);
+      NProgress.done();
     }
   }
+});
+
+router.afterEach(() => {
+  NProgress.done();
 });
