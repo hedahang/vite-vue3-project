@@ -11,6 +11,7 @@ export interface UserInfo {
   username: string;
   email: string;
   avatar?: string;
+  permissions?: string[];
 }
 
 // 登录响应类型

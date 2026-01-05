@@ -7,6 +7,7 @@ import "element-plus/dist/index.css";
 
 import "./assets/styles/index.scss";
 import App from "./App.vue";
+import directives from "./directives";
 import router from "./router";
 import pinia from "./stores";
 import "./permission";
@@ -21,5 +22,5 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 app.use(pinia);
 app.use(router);
 app.use(ElementPlus);
-
+app.use(directives);
 app.mount("#app");

@@ -9,6 +9,7 @@ export interface UserInfo {
   username: string;
   email: string;
   avatar?: string;
+  permissions?: string[];
 }
 
 export const useUserStore = defineStore("user", () => {

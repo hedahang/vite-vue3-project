@@ -28,6 +28,7 @@ export default [
         username: "admin",
         email: "admin@example.com",
         avatar: "https://via.placeholder.com/100",
+        permissions: ["add", "edit", "delete"],
       });
     },
   },
@@ -100,6 +101,17 @@ export default [
               meta: {
                 title: "图表展示",
                 icon: "DataAnalysis",
+                noCache: false,
+                link: null,
+              },
+            },
+            {
+              name: "FocusDemo",
+              path: "/demo/focus",
+              component: "Demo/Demo4",
+              meta: {
+                title: "指令封装",
+                icon: "system",
                 noCache: false,
                 link: null,
               },
