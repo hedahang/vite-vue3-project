@@ -1,3 +1,5 @@
+import type { AxiosResponse } from "axios";
+
 import request from "../utils/request";
 
 // 登录请求参数类型
@@ -18,7 +20,7 @@ export interface LoginResponse {
 }
 
 // 登录方法
-export function login(data: LoginParams): Promise<LoginResponse> {
+export function login(data: LoginParams): Promise<AxiosResponse> {
   return request.post("/api/auth/login", data, {
     headers: {
       isToken: false,
