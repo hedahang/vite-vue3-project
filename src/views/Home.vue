@@ -124,7 +124,7 @@ console.log(demo4);
       <p>{{ str2 }}:{{ bool1 }}</p>
     </div>
     <div class="actions">
-      <button @click="goToAbout">前往关于页</button>
+      <button @click="goToAbout">前往关于页面</button>
     </div>
     <Todolist />
   </div>

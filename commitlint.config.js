@@ -18,11 +18,11 @@ export default {
         "ci", // CI 配置
       ],
     ],
-    "type-case": [2, "always", "lower-case"],
-    "type-empty": [2, "never"],
-    "scope-case": [2, "always", "lower-case"],
-    "subject-empty": [2, "never"],
-    "subject-full-stop": [2, "never", "."],
-    "header-max-length": [2, "always", 100],
+    "type-case": [2, "always", "lower-case"], // 类型必须小写
+    "type-empty": [2, "never"], // 类型不能为空
+    "scope-case": [2, "always", "lower-case"], // 作用域必须小写
+    "subject-empty": [2, "never"], // 描述不能为空
+    "subject-full-stop": [2, "never", "."], //  描述不能以句号结尾
+    "header-max-length": [2, "always", 100], // 整个 header 最大长度为 100 个字符
   },
 };
