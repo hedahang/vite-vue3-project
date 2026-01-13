@@ -18,7 +18,7 @@ export interface LoginResponse {
 }
 
 // 登录方法
-export function login(data: LoginParams) {
+export function login(data: LoginParams): Promise<LoginResponse> {
   return request.post("/api/auth/login", data, {
     headers: {
       isToken: false,
