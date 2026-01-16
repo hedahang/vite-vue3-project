@@ -116,6 +116,17 @@ export default [
                 link: null,
               },
             },
+            {
+              name: "ComponentDemo",
+              path: "/demo/component",
+              component: "Demo/Demo5",
+              meta: {
+                title: "组件封装",
+                icon: "system",
+                noCache: false,
+                link: null,
+              },
+            },
           ],
         },
       ]);

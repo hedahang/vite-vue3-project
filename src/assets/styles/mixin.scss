@@ -1,0 +1,15 @@
+$namespace: "custom";
+$state-prefix: "is-";
+@mixin b($block) {
+  $C: $namespace + "-" + $block;
+  .#{$C} {
+    @content;
+  }
+}
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
