@@ -156,6 +156,8 @@ $button-large-padding-vertical: 15px !default;
 /// padding||Spacing|3
 $button-large-padding-horizontal: 25px !default;
 
+// Round
+$button-round-border-radius: 30px !default;
 @mixin b($block) {
   $C: $namespace + "-" + $block;
   .#{$C} {
@@ -197,6 +199,7 @@ $button-large-padding-horizontal: 25px !default;
   border-radius: $border-radius;
   &.is-round {
     padding: $padding-vertical $padding-horizontal;
+    border-radius: $button-round-border-radius;
   }
 }
 @mixin button-variant($color, $background-color, $border-color) {

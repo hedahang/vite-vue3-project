@@ -3,6 +3,7 @@
     <custom-header>Header</custom-header>
     <custom-main>
       <custom-button>Button</custom-button>
+      <custom-button type="primary" round>Button</custom-button>
       <custom-button type="primary">Button</custom-button>
       <custom-button type="success">Button</custom-button>
       <custom-button type="warning">Button</custom-button>

@@ -4,6 +4,7 @@
     :class="[
       buttonSize ? `custom-button--${buttonSize}` : '',
       type ? `custom-button--${type}` : '',
+      buttonRound,
     ]"
   >
     <slot />
@@ -20,15 +21,20 @@ import { useGlobalConfig } from "@/utils/useGlobalConfig";
 interface Props {
   size?: "" | "small" | "medium" | "large";
   type?: "" | "primary" | "success" | "warning" | "danger" | "info";
+  round?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
   size: "",
   type: "",
+  round: false,
 });
 const globalConfig = useGlobalConfig();
 const buttonSize = computed(() => {
   console.log(props.size, globalConfig);
   return props.size || globalConfig.size;
+});
+const buttonRound = computed(() => {
+  return props.round ? "is-round" : "";
 });
 </script>
 <style lang="scss">
