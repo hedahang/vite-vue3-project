@@ -6,7 +6,6 @@ import CustomFooter from "./Footer.vue";
 import CustomHeader from "./Header.vue";
 import CustomMain from "./Main.vue";
 
-
 // console.log(CustomHeader);
 export default {
   install(app: AppType) {

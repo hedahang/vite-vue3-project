@@ -1,7 +1,14 @@
 <template>
   <custom-container>
     <custom-header>Header</custom-header>
-    <custom-main>Main</custom-main>
+    <custom-main>
+      <custom-button>Button</custom-button>
+      <custom-button type="primary">Button</custom-button>
+      <custom-button type="success">Button</custom-button>
+      <custom-button type="warning">Button</custom-button>
+      <custom-button type="danger" size="medium">Button</custom-button>
+      <custom-button type="info" size="small">Button</custom-button>
+    </custom-main>
     <custom-footer>Footer</custom-footer>
   </custom-container>
   <hr />

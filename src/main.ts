@@ -3,7 +3,8 @@ import ElementPlus from "element-plus";
 import { createApp } from "vue";
 import type { App as AppType } from "vue";
 
-import Container from "./components/Container";
+import CustomButton from "./components/Button/Button.vue";
+import CustomContainer from "./components/Container";
 
 import "element-plus/dist/index.css";
 
@@ -21,9 +22,16 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);
 }
 
+// 全局配置
+app.config.globalProperties.$AILEMENTE = {
+  size: "large",
+};
+// 全局注册组件
+app.use(CustomContainer);
+app.component("CustomButton", CustomButton);
+// 全局注册插件
 app.use(pinia);
 app.use(router);
 app.use(ElementPlus);
 app.use(directives);
-app.use(Container);
 app.mount("#app");
