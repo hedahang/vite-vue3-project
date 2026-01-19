@@ -1,36 +1,47 @@
 <template>
-  <div
-    class="custom-container"
-    :class="{ 'is-vertical': isVertical }"
-    @click="handleClick"
-  >
-    <div v-for="index in 8" :key="index" class="item">{{ index }}</div>
-  </div>
+  <custom-container>
+    <custom-header>Header</custom-header>
+    <custom-main>Main</custom-main>
+    <custom-footer>Footer</custom-footer>
+  </custom-container>
+  <hr />
+
+  <custom-container>
+    <custom-header>Header</custom-header>
+    <custom-container>
+      <custom-aside width="200px">Aside</custom-aside>
+      <custom-main>Main</custom-main>
+    </custom-container>
+  </custom-container>
+  <hr />
+  <custom-container>
+    <custom-aside width="200px">Aside</custom-aside>
+    <custom-container>
+      <custom-header>Header</custom-header>
+      <custom-main>Main</custom-main>
+      <custom-footer>Footer</custom-footer>
+    </custom-container>
+  </custom-container>
 </template>
-<script lang="ts" setup>
-import { ref } from "vue";
-const isVertical = ref(false);
-function handleClick() {
-  isVertical.value = !isVertical.value;
-}
-</script>
+<script setup lang="ts"></script>
 <style lang="scss">
-@use "../../assets/styles/mixin.scss" as *;
-@include b(container) {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  flex-basis: auto;
-  box-sizing: border-box;
-  min-width: 0;
-  @include when(vertical) {
-    flex-direction: column;
-  }
-  .item {
-    width: 100px;
-    height: 100px;
-    margin: 20px;
-    background-color: aqua;
-  }
+.custom-header,
+.custom-footer {
+  background-color: #b3c0d1;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+}
+.custom-aside {
+  background-color: #d3dce6;
+  color: #333;
+  text-align: center;
+  line-height: 200px;
+}
+.custom-main {
+  background-color: #e9eef3;
+  color: #333;
+  text-align: center;
+  line-height: 160px;
 }
 </style>

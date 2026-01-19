@@ -3,6 +3,8 @@ import ElementPlus from "element-plus";
 import { createApp } from "vue";
 import type { App as AppType } from "vue";
 
+import Container from "./components/Container";
+
 import "element-plus/dist/index.css";
 
 import "./assets/styles/index.scss";
@@ -23,4 +25,5 @@ app.use(pinia);
 app.use(router);
 app.use(ElementPlus);
 app.use(directives);
+app.use(Container);
 app.mount("#app");

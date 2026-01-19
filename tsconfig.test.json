@@ -7,7 +7,11 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "verbatimModuleSyntax": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "src/**/*.ts",

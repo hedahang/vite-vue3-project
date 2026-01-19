@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { viteMockServe } from "vite-plugin-mock";
 import { visualizer } from "rollup-plugin-visualizer";
+import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -23,5 +24,18 @@ export default defineConfig(({ mode }) => {
         brotliSize: true, // 显示 brotli 体积
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // 配置 SCSS 选项，但不使用 additionalData
+          // 变量和 mixin 在组件中手动导入
+        },
+      },
+    },
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
   };
 });

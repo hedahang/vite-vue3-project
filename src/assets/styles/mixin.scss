@@ -1,5 +1,14 @@
+// BEM 命名空间配置
 $namespace: "custom";
+$element-separator: "__";
+$modifier-separator: "--";
 $state-prefix: "is-";
+
+// Container 组件相关变量（默认值，可在组件中覆盖）
+$header-padding: 0px 20px !default;
+$footer-padding: 0 20px !default;
+$main-padding: 20px !default;
+
 @mixin b($block) {
   $C: $namespace + "-" + $block;
   .#{$C} {
