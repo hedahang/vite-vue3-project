@@ -3,8 +3,9 @@ import ElementPlus from "element-plus";
 import { createApp } from "vue";
 import type { App as AppType } from "vue";
 
-import CustomButton from "./components/Button/Button.vue";
+import CustomButton from "./components/Button";
 import CustomContainer from "./components/Container";
+import CustomForm from "./components/Form";
 
 import "element-plus/dist/index.css";
 
@@ -28,7 +29,8 @@ app.config.globalProperties.$AILEMENTE = {
 };
 // 全局注册组件
 app.use(CustomContainer);
-app.component("CustomButton", CustomButton);
+app.use(CustomButton);
+app.use(CustomForm);
 // 全局注册插件
 app.use(pinia);
 app.use(router);

@@ -127,6 +127,17 @@ export default [
                 link: null,
               },
             },
+            {
+              name: "FormDemo",
+              path: "/demo/form",
+              component: "Demo/Demo6",
+              meta: {
+                title: "表单验证",
+                icon: "system",
+                noCache: false,
+                link: null,
+              },
+            },
           ],
         },
       ]);
