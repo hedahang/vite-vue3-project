@@ -3,7 +3,9 @@
     <custom-header>Header</custom-header>
     <custom-main>
       <custom-button>Button</custom-button>
-      <custom-button type="primary" round>Button</custom-button>
+      <custom-button type="primary" round @click="handleOpenDialog"
+        >Button</custom-button
+      >
       <custom-button type="primary">Button</custom-button>
       <custom-button type="success">Button</custom-button>
       <custom-button type="warning">Button</custom-button>
@@ -30,8 +32,20 @@
       <custom-footer>Footer</custom-footer>
     </custom-container>
   </custom-container>
+  <custom-notification
+    v-model:visible="dialogVisible"
+    position="top-tight"
+    title="提示"
+    message="这是一段信息"
+  />
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+const dialogVisible = ref(false);
+const handleOpenDialog = () => {
+  dialogVisible.value = true;
+};
+</script>
 <style lang="scss">
 .custom-header,
 .custom-footer {

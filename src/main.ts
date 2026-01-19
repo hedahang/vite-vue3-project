@@ -3,14 +3,15 @@ import ElementPlus from "element-plus";
 import { createApp } from "vue";
 import type { App as AppType } from "vue";
 
+import App from "./App.vue";
 import CustomButton from "./components/Button";
 import CustomContainer from "./components/Container";
 import CustomForm from "./components/Form";
+import CustomNotification from "./components/Notification";
 
 import "element-plus/dist/index.css";
 
 import "./assets/styles/index.scss";
-import App from "./App.vue";
 import directives from "./directives";
 import router from "./router";
 import pinia from "./stores";
@@ -31,6 +32,7 @@ app.config.globalProperties.$AILEMENTE = {
 app.use(CustomContainer);
 app.use(CustomButton);
 app.use(CustomForm);
+app.use(CustomNotification);
 // 全局注册插件
 app.use(pinia);
 app.use(router);

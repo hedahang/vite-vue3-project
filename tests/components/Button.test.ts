@@ -20,6 +20,6 @@ describe("Button 组件测试", () => {
       },
     });
     // size内部通过class控制
-    expect(wrapper.classes()).toContain("el-button--small");
+    expect(wrapper.classes()).toContain("custom-button--small");
   });
 });

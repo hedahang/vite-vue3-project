@@ -33,7 +33,7 @@ module.exports = {
   testPathIgnorePatterns: ["/node_modules/", "/dist/"],
 
   // 收集覆盖率
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: [
     "src/**/*.{js,jsx,ts,tsx,vue}",
     "!src/**/*.d.ts",
