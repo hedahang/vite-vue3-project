@@ -14,6 +14,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { FormInstance } from "element-plus";
+import { Notification } from "@/components/Notification";
+
 const form = ref<FormInstance>();
 const ruleForm = ref({
   username: "",
@@ -26,7 +28,33 @@ const rules = ref({
 const submitForm = () => {
   form.value?.validate((valid) => {
     if (valid) {
-      console.log("submit");
+      console.log("submit"); // 基础用法
+      // Notification({
+      //   title: "提示",
+      //   message: "这是一条消息",
+      // });
+
+      // 快捷方法
+      Notification.success({
+        title: "成功",
+        message: "操作成功",
+      });
+
+      // // 手动关闭
+      // const instance =
+      Notification({
+        message: "这条消息不会自动关闭",
+        duration: 0,
+      });
+      // instance.close();
+
+      // // 带回调
+      Notification({
+        message: "操作完成",
+        onClose: () => {
+          console.log("通知已关闭");
+        },
+      });
     }
   });
 };

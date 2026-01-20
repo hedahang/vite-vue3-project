@@ -3,10 +3,12 @@
     <custom-header>Header</custom-header>
     <custom-main>
       <custom-button>Button</custom-button>
-      <custom-button type="primary" round @click="handleOpenDialog"
-        >Button</custom-button
+      <custom-button type="primary" round @click="handleOpenNotify"
+        >通知</custom-button
       >
-      <custom-button type="primary">Button</custom-button>
+      <custom-button type="primary" @click="handleOpenDialog"
+        >弹框</custom-button
+      >
       <custom-button type="success">Button</custom-button>
       <custom-button type="warning">Button</custom-button>
       <custom-button type="danger" size="medium">Button</custom-button>
@@ -33,15 +35,27 @@
     </custom-container>
   </custom-container>
   <custom-notification
-    v-model:visible="dialogVisible"
+    v-model:visible="notifyVisible"
     position="top-tight"
     title="提示"
     message="这是一段信息"
   />
+  <custom-dialog
+    v-model:visible="dialogVisible"
+    append-to-body
+    title="提示"
+    width="30%"
+  >
+    <span>这是一段信息</span>
+  </custom-dialog>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
+const notifyVisible = ref(false);
 const dialogVisible = ref(false);
+const handleOpenNotify = () => {
+  notifyVisible.value = true;
+};
 const handleOpenDialog = () => {
   dialogVisible.value = true;
 };

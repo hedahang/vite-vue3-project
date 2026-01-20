@@ -1,22 +1,22 @@
 <template>
   <div v-if="visible" class="custom-notification" :style="positionStyle">
-    <div class="custom-nofication__title">
+    <div class="custom-notification__title">
       <slot name="title">
         <span>{{ title }}</span>
       </slot>
     </div>
-    <div class="custom-nofication__message">
+    <div class="custom-notification__message">
       <slot name="message">
         <span>{{ message }}</span>
       </slot>
     </div>
-    <button
+    <div
       v-if="showClose"
-      class="custom-nofication__close-button"
+      class="custom-notification__close-button"
       @click="handleClose"
     >
-      X
-    </button>
+      ×
+    </div>
   </div>
 </template>
 
@@ -32,7 +32,8 @@ interface Props {
   title?: string;
   message?: string;
   position?: string;
-  offset?: number;
+  offset?: number; // 水平方向偏移（left/right）
+  verticalOffset?: number; // 垂直方向偏移（top/bottom），用于堆叠
   showClose?: boolean;
   visible?: boolean;
 }
@@ -42,6 +43,7 @@ const props = withDefaults(defineProps<Props>(), {
   message: "",
   position: "top-right",
   offset: 20,
+  verticalOffset: undefined, // 如果不提供，则使用 offset（向后兼容）
   visible: false,
 });
 // 定义 emit
@@ -49,30 +51,35 @@ const emit = defineEmits<{
   (e: "update:visible", value: boolean): void;
 }>();
 const positionStyle = computed(() => {
+  // 垂直偏移：如果提供了 verticalOffset 则使用，否则使用 offset（向后兼容）
+  const verticalOffset = props.verticalOffset ?? props.offset;
+  // 水平偏移：始终使用 offset
+  const horizontalOffset = props.offset;
+
   if (props.position === "top-right") {
     return {
-      top: `${props.offset}px`,
-      right: `${props.offset}px`,
+      top: `${verticalOffset}px`,
+      right: `${horizontalOffset}px`,
     };
   } else if (props.position === "top-left") {
     return {
-      top: `${props.offset}px`,
-      left: `${props.offset}px`,
+      top: `${verticalOffset}px`,
+      left: `${horizontalOffset}px`,
     };
   } else if (props.position === "bottom-right") {
     return {
-      bottom: `${props.offset}px`,
-      right: `${props.offset}px`,
+      bottom: `${verticalOffset}px`,
+      right: `${horizontalOffset}px`,
     };
   } else if (props.position === "bottom-left") {
     return {
-      bottom: `${props.offset}px`,
-      left: `${props.offset}px`,
+      bottom: `${verticalOffset}px`,
+      left: `${horizontalOffset}px`,
     };
   }
   return {
-    top: `${props.offset}px`,
-    right: `${props.offset}px`,
+    top: `${verticalOffset}px`,
+    right: `${horizontalOffset}px`,
   };
 });
 const handleClose = () => {
@@ -89,17 +96,26 @@ const handleClose = () => {
   background-color: #fff;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  .custom-nofication__close-button {
+  .custom-notification__title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #303133;
+    margin: 0;
+  }
+  .custom-notification__message {
+    font-size: 14px;
+    line-height: 21px;
+    margin: 6px 0 0;
+    color: #606266;
+    text-align: justify;
+  }
+  .custom-notification__close-button {
     position: absolute;
-    right: 10px;
-    top: 10px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #000;
-    color: #fff;
-    border: none;
+    top: 18px;
+    right: 15px;
     cursor: pointer;
+    color: #909399;
+    font-size: 16px;
   }
 }
 </style>

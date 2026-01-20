@@ -30,7 +30,6 @@ const props = withDefaults(defineProps<Props>(), {
 });
 const globalConfig = useGlobalConfig();
 const buttonSize = computed(() => {
-  console.log(props.size, globalConfig);
   return props.size || globalConfig.size;
 });
 const buttonRound = computed(() => {

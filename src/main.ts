@@ -6,6 +6,7 @@ import type { App as AppType } from "vue";
 import App from "./App.vue";
 import CustomButton from "./components/Button";
 import CustomContainer from "./components/Container";
+import CustomDialog from "./components/Dialog";
 import CustomForm from "./components/Form";
 import CustomNotification from "./components/Notification";
 
@@ -33,6 +34,7 @@ app.use(CustomContainer);
 app.use(CustomButton);
 app.use(CustomForm);
 app.use(CustomNotification);
+app.use(CustomDialog);
 // 全局注册插件
 app.use(pinia);
 app.use(router);
