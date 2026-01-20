@@ -138,6 +138,17 @@ export default [
                 link: null,
               },
             },
+            {
+              name: "TreeDemo",
+              path: "/demo/tree",
+              component: "Demo/Demo7",
+              meta: {
+                title: "树形组件",
+                icon: "system",
+                noCache: false,
+                link: null,
+              },
+            },
           ],
         },
       ]);
